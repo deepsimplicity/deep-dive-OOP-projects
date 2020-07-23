@@ -74,6 +74,8 @@ class Article:
             raise TypeError \
                 (f"Expected an instance of type 'int' for '{str_repr}',"
                  f" got '{type(value).__name__}' instead")
+        if value <= 0:
+            raise ValueError(f"{str_repr} must be greater than 0")
 
     def short_introduction(self, n_characters):
         Article._validate_integer(n_characters, 'n_characters')
