@@ -9,6 +9,10 @@ class ArticleField:
     def __init__(self, field_type: typing.Type[typing.Any]):
         self.field_type = field_type
 
+    def __repr__(self):
+        return '<{} descriptor with field_type={}>' \
+            .format(self.__class__.__name__, self.field_type)
+
     def __set_name__(self, owner, name):
         self.name = name
 
