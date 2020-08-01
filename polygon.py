@@ -1,5 +1,6 @@
 from math import sin, cos, pi
 
+
 class Polygon:
     def __init__(self, n, R):
         Polygon._validate_field(n, int)
