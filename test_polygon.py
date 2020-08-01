@@ -4,6 +4,7 @@ import unittest
 
 
 class TestPolygon(unittest.TestCase):
+    # keyword arguments for math.isclose()
     rel_tol = 0.001
     abs_tol = 0.001
 
