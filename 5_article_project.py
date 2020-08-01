@@ -1,6 +1,5 @@
 from collections import Counter
 import datetime
-from functools import total_ordering
 import re
 import typing
 
@@ -10,7 +9,7 @@ class ArticleField:
         self.field_type = field_type
 
     def __repr__(self):
-        return '<{} descriptor with field_type={}>' \
+        return '<{} descriptor with field_type={}>'\
             .format(self.__class__.__name__, self.field_type)
 
     def __set_name__(self, owner, name):
@@ -18,7 +17,7 @@ class ArticleField:
 
     def __set__(self, instance, value):
         if not isinstance(value, self.field_type):
-            raise TypeError \
+            raise TypeError\
                 (f"expected an instance of type '{self.field_type.__name__}'"
                  f" for attribute '{self.name}',"
                  f" got '{type(value).__name__}' instead")
@@ -32,7 +31,6 @@ class ArticleField:
         return instance.__dict__.get(self.name, None)
 
 
-@total_ordering
 class Article:
     _id = 0
 
@@ -59,7 +57,7 @@ class Article:
         return self._last_edited
 
     def __repr__(self):
-        return "<Article title=\"{}\" author='{}' publication_date='{}'>" \
+        return "<Article title=\"{}\" author='{}' publication_date='{}'>"\
             .format(self.title, self.author, self.publication_date.isoformat())
 
     def __len__(self):
@@ -71,7 +69,7 @@ class Article:
     @staticmethod
     def _validate_integer(value, str_repr):
         if not isinstance(value, int):
-            raise TypeError \
+            raise TypeError\
                 (f"Expected an instance of type 'int' for '{str_repr}',"
                  f" got '{type(value).__name__}' instead")
         if value <= 0:
