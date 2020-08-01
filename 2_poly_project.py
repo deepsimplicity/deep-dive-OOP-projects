@@ -1,6 +1,7 @@
 from functools import total_ordering
 import operator
 
+
 @total_ordering
 class Mod:
 
@@ -37,9 +38,10 @@ class Mod:
             return other % self.modulus
         if isinstance(other, Mod) and self.modulus == other.modulus:
             return other.value
-        raise TypeError('Incompatible types.')
+        raise TypeError('Incompatible types')
 
     def _perform_operation(self, other, op, *, in_place=False):
+        # Optional keyword only argument for in place operation
         other_value = self._get_value(other)
         new_value = op(self.value, other_value)
         if in_place:

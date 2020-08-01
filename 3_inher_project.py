@@ -2,6 +2,7 @@ def validate_integer(
         arg_name, arg_value, min_value=None, max_value=None,
         custom_min_message=None, custom_max_message=None,
 ):
+    # Helper function with optional custom messages
     if not isinstance(arg_value, int):
         raise TypeError(f'{arg_name} must be a integer')
     if min_value is not None and arg_value < min_value:
@@ -29,6 +30,7 @@ class Resource:
         self._manufacturer = manufacturer
         self._allocated = allocated
 
+        # Use for child class repr method
         self._resource_repr = \
             (self.__class__.__name__,
              self.name, self.manufacturer, self.total, self.allocated)

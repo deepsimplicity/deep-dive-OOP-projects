@@ -39,6 +39,8 @@ class Account:
 
     @property
     def full_name(self):
+        # Full name is cached
+        # Only calculate if name(s) change
         if self._full_name is None:
             self._full_name = self.first_name + ' ' + self.last_name
         return self._full_name
@@ -60,7 +62,8 @@ class Account:
     @classmethod
     def set_interest_rate(cls, value):
         if not isinstance(value, float) or not value > 0:
-            raise TypeError('Interest rate must be a float and greater than 0')
+            raise TypeError\
+                ('Interest rate must be a float and greater than 0')
         cls._interest_rate = value
 
     def deposit(self, value):

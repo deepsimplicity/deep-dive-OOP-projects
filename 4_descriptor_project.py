@@ -9,6 +9,7 @@ class BaseValidator:
     def __get__(self, instance, owner):
         if instance is None:
             return self
+        # Dict.get() to return None if attribute is not set
         return instance.__dict__.get(self.name, None)
 
 
@@ -28,8 +29,9 @@ class IntegerField(BaseValidator):
 
 class CharField(BaseValidator):
     def __init__(self, mini_, max_):
-        mini_ = mini_ or 0
-        mini_ = max(mini_, 0)
+        # mini_ = max(mini_ or 0, 0)
+        mini_ = mini_ or 0      # 0 if None
+        mini_ = max(mini_, 0)   # 0 if negative
         super().__init__(mini_, max_)
 
     def __set__(self, instance, value):
